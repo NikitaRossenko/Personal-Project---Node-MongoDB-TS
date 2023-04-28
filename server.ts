@@ -12,8 +12,8 @@ app.use(express.static("public/login"))
 app.use(express.static("public/register"))
 
 // Routes Use
-app.use("api/users/", loginRouter)
-app.use("api/users/", registerRouter)
+app.use("api/v1.0/users/", loginRouter)
+app.use("api/v1.0/users/", registerRouter)
 
 app.listen(serverPort, () => {
     console.log(`Server started at port ${serverPort}`)

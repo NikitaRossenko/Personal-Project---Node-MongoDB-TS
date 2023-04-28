@@ -10,8 +10,8 @@ app.use(express_1["default"].static("public/index"));
 app.use(express_1["default"].static("public/login"));
 app.use(express_1["default"].static("public/register"));
 // Routes Use
-app.use("api/users/", loginRoute_1["default"]);
-app.use("api/users/", registerRoute_1["default"]);
+app.use("api/v1.0/users/", loginRoute_1["default"]);
+app.use("api/v1.0/users/", registerRoute_1["default"]);
 app.listen(serverPort, function () {
     console.log("Server started at port " + serverPort);
 });

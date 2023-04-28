@@ -7,7 +7,7 @@ function handleLogin(e:any){
         if (!username || !password) throw new Error("Please enter The Username & Password")
         const userDetails = {username,password}
 
-        fetch("/login", {
+        fetch("/api/v1.0/user/login", {
             method:"POST",
             headers: {
                 Accept: "application/json",
