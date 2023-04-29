@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./dist/shipStore.js" defer></script>
+    <link rel="stylesheet" href="../dist/style.css">
+    <link rel="stylesheet" href="./dist/shipStore.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Alternative Home - App Store</title>
+</head>
+<body onload=checkLoggedIn()>
+    <div class="navBar">
+        <div class="navBar_container">
+            <div class="navBar_logo">
+                <img id="logo" src="./images/logo.png" />
+            </div>
+            <div class="navBar_links">
+                <div class="links">
+                    <a class="link" href="/">Home</a>
+                    <a
+                        class="link"
+                        href="ship-store.html"
+                        >Spaceship Store</a
+                    >
+                    <a class="link" href="ship-store.html">Environment</a>
+                    <a class="link" href="ship-store.html">Contact</a>
+                </div>
+                <div class="logoutLoginDiv">
+                    <a class="link" id="username"></a>
+                    <a class="link" id="loginLogoutBtn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main_container">
+        <h1>Shop Entrance</h1>
+        <div class="video_container">
+            <div class="enterShop">Enter</div>
+            <div class="darken"></div>
+            <video onclick="openShop()" id="spaceshipShopEntrance" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (54).mp4"></video>
+        </div>
+    </div>
+    <div class="backgroundAnimation">
+        <video src="../index/images/background/Untitled design.mp4" autoplay muted></video>
+        <video src="../index/images/background/Untitled design (1).mp4" autoplay muted></video>
+    </div>
+
+    <!-- <div class="spaceshipsContainer">
+        <div class="spaceshipCard">
+            <h1 class="spaceshipName">Spaceship Name</h1>
+            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (40).mp4" ></video>
+            <button class="spaceshipBtn">Buy Now!</button>
+        </div>
+        <div class="spaceshipCard">
+            <h1 class="spaceshipName">Spaceship Name</h1>
+            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated//Untitled design (41).mp4" ></video>
+            <button class="spaceshipBtn">Buy Now!</button>
+        </div>
+    </div> -->
+
+    <div class="container sliderContainer">
+        <h2>Space Ships</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+            <li data-target="#myCarousel" data-slide-to="6"></li>
+            <li data-target="#myCarousel" data-slide-to="7"></li>
+            <li data-target="#myCarousel" data-slide-to="8"></li>
+            <li data-target="#myCarousel" data-slide-to="9"></li>
+          </ol>
+      
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner">
+      
+            <div class="item active">
+            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (40).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>Los Angeles</h3>
+                    <p>LA is always so much fun!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+      
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (41).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>Chicago</h3>
+                    <p>Thank you, Chicago!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+          
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (44).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (46).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (47).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (48).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (49).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (50).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (51).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+            <div class="item">
+                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (53).mp4" ></video>
+                <div class="carousel-caption">
+                    <h3>New York</h3>
+                    <p>We love the Big Apple!</p>
+                    <button class="spaceshipBtn">Buy Now!</button>
+                </div>
+            </div>
+        
+          </div>
+      
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer_container">
+        <div class="copyright">
+            <p>Copyright © Nikita Rossenko 2023, All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

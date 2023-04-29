@@ -1,0 +1,154 @@
+body  {
+    background-color: #251424 !important;
+}
+
+.spaceshipBtn{
+    all: unset;
+    font-size: 20px;
+    cursor: pointer;
+    border: 1px solid #67E9DE;
+    background-color: black;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 4px;
+}
+.spaceshipBtn:hover{
+    background-color: #6C57A1;
+}
+
+.main_container{
+    width: 1200px;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    .video_container:hover .enterShop{
+        display: block;
+    }
+
+    .video_container{
+        width: 1024px;
+        height: 576px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        #spaceshipShopEntrance{
+            border-radius: 20px;
+        }
+
+        .enterShop {
+            display: none;
+            padding: 0;
+            margin: 0;
+            position: absolute;
+            color: #203047;
+            font-size: 100px;
+            font-weight: bold;
+            -webkit-text-stroke: 2px #9AFCFF;
+            transition: 0.5s;
+            animation-name: flicker;
+            animation-duration: 1s;
+            animation-delay: -2s;
+            animation-iteration-count:infinite;
+        }
+    }
+
+
+    h1 {
+        color: white;
+    }
+}
+
+.spaceshipsContainer{
+    height: auto;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .spaceshipCard {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-direction: column;
+        // border: 1px solid #9afcff;
+        width: 500px;
+        height: 400px;
+        padding: 10px;
+        border-radius: 20px;
+        // gap: 20px;
+
+    }
+
+    .spaceshipName{
+        margin: 0;
+        color: white;
+    }
+
+    .spaceshipVideo{
+        width: 100%;
+        height: 100%;
+        object-fit:contain;
+
+    }
+
+
+}
+.sliderContainer{
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px;
+    
+    #myCarousel{
+        .carousel-control{
+            border-radius: 20px;
+        }
+        border-radius: 20px;
+        .carousel-inner{
+            border-radius: 20px;
+            .item{
+                border-radius: 20px;
+            }
+        }
+    }
+    h2 {
+        color: white;
+    }
+
+    #myCarousel{
+    
+        width: 1000px;
+    }
+}
+
+.backgroundAnimation {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    z-index: -1;
+}
+
+@keyframes flicker {
+    0% {
+        -webkit-text-stroke: 2px #e3feff;
+        font-size: 100px;
+    }
+    50% {
+        -webkit-text-stroke: 4px #b8fcff;
+        font-size: 120px;
+    }
+    100% {
+        -webkit-text-stroke: 5px #9AFCFF;
+        font-size: 100px;
+    }
+}

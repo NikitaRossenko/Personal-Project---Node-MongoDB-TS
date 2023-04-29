@@ -5,14 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="dist/register.js"></script>
-    <title>Document</title>
+    <title>Alternative Home - Register</title>
 </head>
 <body>
+    <div class="navBar">
+        <h1>Register</h1>
+        <a href="/">Home</a>
+    </div>
+    
     <div class="login_register_container">
         <form onsubmit=handleRegister(event)>
             <input required type="text" name="username" placeholder="Username">
             <input required type="password" name="password" placeholder="Password">
-            <input type="submit" value="Login">
+            <input type="submit" value="Register">
         </form>
         <a href="/login.html">Already have a user? Login</a>
     </div>

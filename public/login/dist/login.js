@@ -6,7 +6,7 @@ function handleLogin(e) {
         if (!username || !password)
             throw new Error("Please enter The Username & Password");
         var userDetails = { username: username, password: password };
-        fetch("/api/v1.0/user/login", {
+        fetch("/api/v1.0/users/login", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -16,7 +16,12 @@ function handleLogin(e) {
         })
             .then(function (res) { return res.json(); })
             .then(function (data) {
-            console.log(data);
+            if (data.ok === true) {
+                location.href = "/";
+            }
+            else {
+                console.log("Wrong username or password!");
+            }
         })["catch"](function (error) {
             console.log(error);
         });

@@ -6,7 +6,7 @@ function handleRegister(e) {
         if (!username || !password)
             throw new Error("Please enter The Username & Password");
         var userDetails = { username: username, password: password };
-        fetch("/api/v1.0/user/register", {
+        fetch("/api/v1.0/users/register", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -16,7 +16,9 @@ function handleRegister(e) {
         })
             .then(function (res) { return res.json(); })
             .then(function (data) {
-            console.log(data);
+            if (data.ok === true) {
+                location.href = "login.html";
+            }
         })["catch"](function (error) {
             console.log(error);
         });
