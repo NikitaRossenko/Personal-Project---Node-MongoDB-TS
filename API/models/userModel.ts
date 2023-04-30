@@ -1,10 +1,18 @@
-import mongoose, {Schema} from "mongoose"
+import { Document, Schema, model } from "mongoose";
+import { ICart } from "./cartModel";
 
-export const UserSchema = new Schema({
-    username:{require:true, type:String},
-    password:{require:true, type:String},
-})
+interface IUser extends Document {
+    username: string;
+    email: string;
+    password: string;
+    cart: ICart;
+}
 
-const UserModel = mongoose.model("users", UserSchema)
+const UserSchema = new Schema({
+    username: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    cart: { type: Schema.Types.ObjectId, ref: 'Cart' },
+});
 
-export default UserModel
+export const UserModel = model<IUser>("User", UserSchema);

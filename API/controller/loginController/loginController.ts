@@ -1,4 +1,4 @@
-import UserModel from "../../models/userModel"
+import { UserModel } from "../../models/userModel"
 import * as dotenv from "dotenv";
 dotenv.config();
 import jwt from "jwt-simple"

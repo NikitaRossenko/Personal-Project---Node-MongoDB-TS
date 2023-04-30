@@ -52,7 +52,7 @@ exports.login = function (req, res) { return __awaiter(void 0, void 0, void 0, f
                 _a = req.body, username = _a.username, password = _a.password;
                 if (!username || !password)
                     throw new Error("Missing username or password");
-                return [4 /*yield*/, userModel_1["default"].findOne({ username: username, password: password })];
+                return [4 /*yield*/, userModel_1.UserModel.findOne({ username: username, password: password })];
             case 1:
                 existingUser = _b.sent();
                 if (!jwtSecret)
@@ -85,7 +85,7 @@ exports.loggedIn = function (req, res) { return __awaiter(void 0, void 0, void 0
                     throw new Error("Cookie Error!");
                 if (!isLoggedIn) return [3 /*break*/, 2];
                 userId = jwt_simple_1["default"].decode(isLoggedIn, jwtSecret);
-                return [4 /*yield*/, userModel_1["default"].findById(userId)];
+                return [4 /*yield*/, userModel_1.UserModel.findById(userId)];
             case 1:
                 existingUser = _a.sent();
                 if (!existingUser)

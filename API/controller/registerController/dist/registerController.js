@@ -39,20 +39,21 @@ exports.__esModule = true;
 exports.register = void 0;
 var userModel_1 = require("../../models/userModel");
 exports.register = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, username, password, existingUser, newUser, error_1;
+    var _a, username, email, password, existingUser, newUser, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 5, , 6]);
-                _a = req.body, username = _a.username, password = _a.password;
+                console.log(req.body);
+                _a = req.body, username = _a.username, email = _a.email, password = _a.password;
                 if (!username || !password)
                     throw new Error("Missing username or password");
-                return [4 /*yield*/, userModel_1["default"].findOne({ username: username, password: password })];
+                return [4 /*yield*/, userModel_1.UserModel.findOne({ username: username, email: email, password: password })];
             case 1:
                 existingUser = _b.sent();
                 if (!!existingUser) return [3 /*break*/, 3];
                 console.log("User", username, "don't exist, creating!");
-                return [4 /*yield*/, userModel_1["default"].create({ username: username, password: password })];
+                return [4 /*yield*/, userModel_1.UserModel.create({ username: username, email: email, password: password })];
             case 2:
                 newUser = _b.sent();
                 console.log(newUser);

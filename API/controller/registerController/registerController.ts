@@ -1,14 +1,15 @@
-import UserModel from "../../models/userModel"
+import { UserModel } from "../../models/userModel"
 
 export const register = async (req:any, res:any) => {
     try {
-        const {username, password} = req.body;
+        console.log(req.body)
+        const {username, email, password} = req.body;
         if (!username || !password) throw new Error("Missing username or password")
 
-        const existingUser = await UserModel.findOne({username, password})
+        const existingUser = await UserModel.findOne({username, email, password})
         if (!existingUser) {
             console.log("User", username, "don't exist, creating!")
-            const newUser = await UserModel.create({username, password})
+            const newUser = await UserModel.create({username, email, password})
             console.log(newUser)
             res.status(201).send({ok:true})
         } else {

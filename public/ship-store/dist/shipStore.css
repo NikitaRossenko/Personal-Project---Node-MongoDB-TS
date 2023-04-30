@@ -1,4 +1,14 @@
 body {
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: Verdana, sans-serif;
   background-color: #251424 !important;
 }
 
@@ -37,7 +47,7 @@ body {
   align-items: center;
 }
 .main_container .video_container #spaceshipShopEntrance {
-  border-radius: 20px;
+  border-radius: 50px;
 }
 .main_container .video_container .enterShop {
   display: none;
@@ -105,6 +115,9 @@ body {
 .sliderContainer #myCarousel .carousel-inner .item {
   border-radius: 20px;
 }
+.sliderContainer #myCarousel .carousel-inner .item .carousel-caption .spaceshipBtn {
+  margin-bottom: 10px;
+}
 .sliderContainer h2 {
   color: white;
 }
@@ -115,9 +128,13 @@ body {
 .backgroundAnimation {
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
+  z-index: -1;
+}
+
+.backgroundSides {
+  width: 100%;
   position: absolute;
   z-index: -1;
 }

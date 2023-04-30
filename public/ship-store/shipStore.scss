@@ -1,6 +1,18 @@
 body  {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-family: Verdana,sans-serif;
     background-color: #251424 !important;
 }
+
+
 
 .spaceshipBtn{
     all: unset;
@@ -37,7 +49,7 @@ body  {
         align-items: center;
 
         #spaceshipShopEntrance{
-            border-radius: 20px;
+            border-radius: 50px;
         }
 
         .enterShop {
@@ -115,6 +127,13 @@ body  {
             border-radius: 20px;
             .item{
                 border-radius: 20px;
+
+                .carousel-caption{
+
+                    .spaceshipBtn{
+                        margin-bottom: 10px;
+                    }
+                }
             }
         }
     }
@@ -131,9 +150,16 @@ body  {
 .backgroundAnimation {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-direction: column;
+    // position: absolute;
+    z-index: -1;
+}
+.backgroundSides {
+    width: 100%;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
     position: absolute;
     z-index: -1;
 }

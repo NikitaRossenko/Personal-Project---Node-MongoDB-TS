@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./dist/shipStore.js" defer></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="./dist/shipStore.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>Alternative Home - App Store</title>
@@ -24,7 +24,7 @@
                     <a
                         class="link"
                         href="ship-store.html"
-                        >Spaceship Store</a
+                        >Starship Store</a
                     >
                     <a class="link" href="ship-store.html">Environment</a>
                     <a class="link" href="ship-store.html">Contact</a>
@@ -37,30 +37,23 @@
         </div>
     </div>
     <div class="main_container">
-        <h1>Shop Entrance</h1>
+        <h1>Starship Store</h1>
         <div class="video_container">
             <div class="enterShop">Enter</div>
             <div class="darken"></div>
             <video onclick="openShop()" id="spaceshipShopEntrance" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (54).mp4"></video>
         </div>
     </div>
-    <div class="backgroundAnimation">
-        <video src="../index/images/background/Untitled design.mp4" autoplay muted></video>
-        <video src="../index/images/background/Untitled design (1).mp4" autoplay muted></video>
+    <div class="backgroundSides">
+        <div class="backgroundAnimation">
+            <img src="../index/images/background/left.png">
+            <img src="../index/images/background/right.png">
+        </div>
+        <div class="backgroundAnimation">
+            <img src="../index/images/background/left2.png">
+            <img src="../index/images/background/right2.png">
+        </div>
     </div>
-
-    <!-- <div class="spaceshipsContainer">
-        <div class="spaceshipCard">
-            <h1 class="spaceshipName">Spaceship Name</h1>
-            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (40).mp4" ></video>
-            <button class="spaceshipBtn">Buy Now!</button>
-        </div>
-        <div class="spaceshipCard">
-            <h1 class="spaceshipName">Spaceship Name</h1>
-            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated//Untitled design (41).mp4" ></video>
-            <button class="spaceshipBtn">Buy Now!</button>
-        </div>
-    </div> -->
 
     <div class="container sliderContainer">
         <h2>Space Ships</h2>
@@ -85,8 +78,8 @@
             <div class="item active">
             <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (40).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>Los Angeles</h3>
-                    <p>LA is always so much fun!</p>
+                    <h3>Vanguard</h3>
+                    <p>A powerful, heavily-armed battleship designed to lead the charge into enemy territory.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
@@ -94,8 +87,8 @@
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (41).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>Chicago</h3>
-                    <p>Thank you, Chicago!</p>
+                    <h3>Thunderbird</h3>
+                    <p>A sleek and nimble ship that strikes with lightning speed and precision.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
@@ -103,64 +96,64 @@
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (44).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Leviathan</h3>
+                    <p>A massive, heavily-armored vessel that can withstand sustained enemy fire while dishing out devastating blows.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (46).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Chimera</h3>
+                    <p>A ship that is part predator, part prey, and all deadly. It can morph and adapt to its surroundings to outmaneuver and outgun its foes.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (47).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Eclipse</h3>
+                    <p>A stealthy ship that can disappear from enemy radar and strike with deadly force when the time is right.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (48).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Valkyrie</h3>
+                    <p>A ship crewed by elite pilots who specialize in aerial combat and dogfighting.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (49).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Goliath</h3>
+                    <p>A hulking, intimidating battleship that can plow through enemy formations and deliver crushing blows.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (50).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Hydra</h3>
+                    <p>A ship with multiple heads, each armed with its own weapons and capable of launching simultaneous attacks on multiple targets.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (51).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Nova</h3>
+                    <p>A ship that harnesses the power of the stars to unleash devastating energy blasts on its foes.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>
             <div class="item">
                 <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (53).mp4" ></video>
                 <div class="carousel-caption">
-                    <h3>New York</h3>
-                    <p>We love the Big Apple!</p>
+                    <h3>Ragnarok</h3>
+                    <p>A ship that brings about the end of worlds. It is armed with planet-destroying weaponry and can lay waste to entire systems with ease.</p>
                     <button class="spaceshipBtn">Buy Now!</button>
                 </div>
             </div>

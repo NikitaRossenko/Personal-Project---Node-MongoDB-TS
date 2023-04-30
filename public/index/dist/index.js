@@ -34,38 +34,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function checkLoggedInStore() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) {
-                            if (data.ok === false) {
-                                location.href = "/login.html";
-                            }
-                            else {
-                                location.href = "/";
-                            }
-                        })];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_1 = _a.sent();
-                    console.log(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
 function checkLoggedIn() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_2;
+        var error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -95,8 +66,8 @@ function checkLoggedIn() {
                     _a.sent();
                     return [3 /*break*/, 3];
                 case 2:
-                    error_2 = _a.sent();
-                    console.log(error_2);
+                    error_1 = _a.sent();
+                    console.log(error_1);
                     return [3 /*break*/, 3];
                 case 3: return [2 /*return*/];
             }
@@ -109,7 +80,7 @@ function login() {
 }
 function logout() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_3;
+        var error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -131,26 +102,13 @@ function logout() {
                     _a.sent();
                     return [3 /*break*/, 4];
                 case 3:
-                    error_3 = _a.sent();
-                    console.log(error_3);
+                    error_2 = _a.sent();
+                    console.log(error_2);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
         });
     });
-}
-var index = 0;
-function sentensesSlide() {
-    var sentenses = document.querySelectorAll(".sentensesSlide");
-    for (var i = 0; i < sentenses.length; i++) {
-        sentenses[i].style.display = "none";
-    }
-    index++;
-    if (index > sentenses.length) {
-        index = 1;
-    }
-    sentenses[index - 1].style.display = "block";
-    setTimeout(sentensesSlide, 9000);
 }
 function randomNumberColors() {
     var numbers = document.querySelectorAll(".number");
@@ -159,4 +117,3 @@ function randomNumberColors() {
     }
 }
 randomNumberColors();
-sentensesSlide();
