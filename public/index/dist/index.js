@@ -36,40 +36,47 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 function checkLoggedIn() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1;
+        var response, data, loginLogoutBtn, loginLogoutBtn, username, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) {
-                            if (data.ok === false) {
-                                var loginLogoutBtn = document.querySelector("#loginLogoutBtn");
-                                if (loginLogoutBtn) {
-                                    loginLogoutBtn.innerText = "Login";
-                                    loginLogoutBtn.setAttribute("onlick", "login()");
-                                    loginLogoutBtn.setAttribute("href", "login.html");
-                                }
-                            }
-                            else {
-                                var loginLogoutBtn = document.querySelector("#loginLogoutBtn");
-                                var username = document.querySelector("#username");
-                                if (loginLogoutBtn && username) {
-                                    username.innerText = data.user;
-                                    loginLogoutBtn.innerText = "Logout";
-                                    loginLogoutBtn.setAttribute("onclick", "logout()");
-                                }
-                            }
-                        })];
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")];
                 case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()
+                        // await fetch("/api/v1.0/users/check-logged-in")
+                        //     .then((res) => res.json())
+                        //     .then((data) => {
+                    ];
                 case 2:
+                    data = _a.sent();
+                    // await fetch("/api/v1.0/users/check-logged-in")
+                    //     .then((res) => res.json())
+                    //     .then((data) => {
+                    if (data.ok === false) {
+                        loginLogoutBtn = document.querySelector("#loginLogoutBtn");
+                        if (loginLogoutBtn) {
+                            loginLogoutBtn.innerText = "Login";
+                            loginLogoutBtn.setAttribute("onlick", "login()");
+                            loginLogoutBtn.setAttribute("href", "login.html");
+                        }
+                    }
+                    else {
+                        loginLogoutBtn = document.querySelector("#loginLogoutBtn");
+                        username = document.querySelector("#username");
+                        if (loginLogoutBtn && username) {
+                            username.innerText = data.user;
+                            loginLogoutBtn.innerText = "Logout";
+                            loginLogoutBtn.setAttribute("onclick", "logout()");
+                        }
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
                     console.log(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });

@@ -1,14 +1,17 @@
 async function checkLoggedInStore() {
     try {
-        await fetch("/api/v1.0/users/check-logged-in")
-            .then((res) => res.json())
-            .then((data) => {
+        const response = await fetch("/api/v1.0/users/check-logged-in")
+        const data = await response.json()
+
+        // await fetch("/api/v1.0/users/check-logged-in")
+        //     .then((res) => res.json())
+        //     .then((data) => {
                 if (data.ok === false){
                     location.href = "/login.html"
                 } else {
-                    location.href = "/"
+                    location.href = "/ship-store.html"
                 }
-            });
+            // });
     } catch (error) {
         console.log(error);
     }

@@ -1,8 +1,11 @@
 async function checkLoggedIn() {
     try {
-        await fetch("/api/v1.0/users/check-logged-in")
-            .then((res) => res.json())
-            .then((data) => {
+        const response = await fetch("/api/v1.0/users/check-logged-in")
+        const data = await response.json()
+
+        // await fetch("/api/v1.0/users/check-logged-in")
+        //     .then((res) => res.json())
+        //     .then((data) => {
                 if (data.ok === false){
                     const loginLogoutBtn:any = document.querySelector("#loginLogoutBtn")
                     if (loginLogoutBtn){
@@ -19,7 +22,7 @@ async function checkLoggedIn() {
                         loginLogoutBtn.setAttribute("onclick", "logout()")
                     }
                 }
-            });
+            // });
     } catch (error) {
         console.log(error);
     }
