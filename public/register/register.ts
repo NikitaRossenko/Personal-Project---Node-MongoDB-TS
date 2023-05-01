@@ -9,7 +9,6 @@ async function handleRegister(e:any){
         if (!username || !password || !email) throw new Error("Please enter The Username & Password")
         const userDetails:any = { username, email, password }
 
-
         fetch("/api/v1.0/users/register", {
             method:"POST",
             headers: {
