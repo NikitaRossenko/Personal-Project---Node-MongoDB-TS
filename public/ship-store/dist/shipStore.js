@@ -75,10 +75,7 @@ function logout() {
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log("logout");
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, fetch("/api/v1.0/users/logout")
                             .then(function (res) { return res.json(); })
                             .then(function (data) {
@@ -89,23 +86,122 @@ function logout() {
                                 throw new Error("Something went wrong!");
                             }
                         })];
-                case 2:
+                case 1:
                     _a.sent();
-                    return [3 /*break*/, 4];
-                case 3:
+                    return [3 /*break*/, 3];
+                case 2:
                     error_2 = _a.sent();
                     console.log(error_2);
-                    return [3 /*break*/, 4];
-                case 4: return [2 /*return*/];
+                    return [3 /*break*/, 3];
+                case 3: return [2 /*return*/];
             }
         });
     });
 }
 function openShop() {
-    var videoContainer = document.querySelector(".video_container");
-    var sliderContainer = document.querySelector(".sliderContainer");
-    if (videoContainer && sliderContainer) {
-        videoContainer.remove();
-        sliderContainer.style.display = "flex";
+    try {
+        var videoContainer = document.querySelector(".video_container");
+        var sliderContainer = document.querySelector(".sliderContainer");
+        if (videoContainer && sliderContainer) {
+            videoContainer.remove();
+            sliderContainer.style.display = "flex";
+        }
+    }
+    catch (error) {
+        console.error(error);
     }
 }
+function openAddDialog() {
+    try {
+        var body = document.querySelector('body');
+        if (!body)
+            throw new Error("body Error!");
+        body.insertAdjacentHTML("beforeend", '<div class="addStarshipContainer"><div class="addStarshipSubContainer"><form onsubmit=addStarship(event)><input class="input" required type="text" name="itemName" placeholder="Starship Name"><input class="input" required type="text" name="itemModel" placeholder="Starship Model"><input class="input" required type="number" name="itemPrice" placeholder="Starship Price"><input class="input" required type="text" name="starshipDescription" placeholder="Starship Description"><input type="submit" value="Add"></form></div></div>');
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+function addStarship(e) {
+    try {
+        e.preventDefault();
+        var starshipName = e.target.elements.itemName.value;
+        var starshipModel = e.target.elements.itemModel.value;
+        var starshipPrice = e.target.elements.itemPrice.value;
+        var starshipDescription = e.target.elements.starshipDescription.value;
+        var carouselInner = document.querySelector(".carousel-inner");
+        if (!carouselInner)
+            throw new Error("Carousel Error!");
+        if (!starshipName || !starshipModel || !starshipPrice || !starshipDescription)
+            throw new Error("Please fill all the feilds!");
+        var newStarship = { starshipName: starshipName, starshipModel: starshipModel, starshipPrice: starshipPrice, starshipDescription: starshipDescription };
+        fetch("/api/v1.0/items/add-starship", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newStarship)
+        })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+            if (data.ok === true) {
+                var addStarshipContainer = document.querySelector(".addStarshipContainer");
+                if (!addStarshipContainer)
+                    throw new Error("addStarshipContainer Error!");
+                addStarshipContainer.remove();
+                renderStarships();
+            }
+            else {
+                console.error("Couldn't add item");
+            }
+        })["catch"](function (error) {
+            console.log(error);
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
+function renderStarships() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, data;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, fetch("/api/v1.0/items/get-starship")];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    data = _a.sent();
+                    if (data.ok === true) {
+                        console.log(data.starships);
+                    }
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+// function addToCart(){
+//     try {
+//         fetch("/api/v1.0/cart/add-item", {
+//             method:"POST",
+//             headers: {
+//                 Accept: "application/json",
+//                 "Content-Type": "application/json",
+//             },
+//             body:JSON.stringify(itemId),
+//         })
+//         .then((res) => res.json())
+//         .then((data) => {
+//             if (data.ok === true){
+//                 location.href = "login.html"
+//             }
+//         })
+//         .catch((error) => {
+//             console.log(error)
+//         }))
+//     } catch (error) {
+//         console.error(error)
+//     }
+// }

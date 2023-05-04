@@ -1,10 +1,13 @@
 import { Schema, model } from "mongoose";
 
 const starshipSchema = new Schema({
-    name: String,
-    price: Number,
+    starshipName: String,
+    starshipModel:String,
+    starshipDescription:String,
+    starshipPrice: Number,
+    itemType:{type:String, default:"starship"}
   });
 
-const StarshipModel = model("Item", starshipSchema);
+export const StarshipModel = model("Items", starshipSchema);
 
 export default StarshipModel

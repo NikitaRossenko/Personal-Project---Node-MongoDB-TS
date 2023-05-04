@@ -25,6 +25,7 @@ if (uri) {
 // Routes Import
 import loginRouter from "./API/routes/loginRoutes/loginRoute";
 import registerRouter from "./API/routes/registerRoutes/registerRoute";
+import itemsRouter from "./API/routes/items/itemsRouter";
 
 app.use(express.static("public"));
 app.use(express.static("public/index"));
@@ -38,6 +39,7 @@ app.use(cookieParser())
 // Routes Use
 app.use("/api/v1.0/users", loginRouter);
 app.use("/api/v1.0/users", registerRouter);
+app.use("/api/v1.0/items", itemsRouter);
 
 app.listen(serverPort, () => {
     console.log(`Server started at port ${serverPort}`);
