@@ -103,6 +103,7 @@ function openShop() {
         var videoContainer = document.querySelector(".video_container");
         var sliderContainer = document.querySelector(".sliderContainer");
         if (videoContainer && sliderContainer) {
+            renderStarships();
             videoContainer.remove();
             sliderContainer.style.display = "flex";
         }
@@ -165,19 +166,39 @@ function addStarship(e) {
 }
 function renderStarships() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data;
+        var response, data, starshipsArray, carouselInner, itemClass, i, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch("/api/v1.0/items/get-starship")];
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/v1.0/items/get-starship")];
                 case 1:
                     response = _a.sent();
                     return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
                     if (data.ok === true) {
-                        console.log(data.starships);
+                        starshipsArray = data.starships;
+                        carouselInner = document.querySelector(".carousel-inner");
+                        itemClass = "item active";
+                        if (!carouselInner)
+                            throw new Error("Corousel Error!");
+                        if (starshipsArray.length > 0) {
+                            for (i = 0; i < starshipsArray.length; i++) {
+                                if (i != 0) {
+                                    itemClass = "item";
+                                }
+                                carouselInner.insertAdjacentHTML("beforeend", "<div class=\"" + itemClass + "\">\n                    <video class=\"spaceshipVideo\" onmouseover=\"this.play()\" onmouseout=\"this.pause()\" loop src=\"" + starshipsArray[i].starshipModel + "\" ></video>\n                    <div class=\"carousel-caption\">\n                        <h3>" + starshipsArray[i].starshipName + "</h3>\n                        <p>" + starshipsArray[i].starshipDescription + "</p>\n                        <p>Price: " + starshipsArray[i].starshipPrice + "$</p>\n                        <button class=\"spaceshipBtn\">Add to cart</button>\n                    </div>\n                </div>");
+                            }
+                        }
+                        console.log(starshipsArray);
                     }
-                    return [2 /*return*/];
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_3 = _a.sent();
+                    console.error(error_3);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });

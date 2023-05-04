@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../dist/style.css">
     <link rel="stylesheet" href="./dist/shipStore.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer></script>
     <title>Alternative Home - App Store</title>
 </head>
 <body onload=checkLoggedIn()>
@@ -75,89 +75,6 @@
           <!-- Wrapper for slides -->
           <div class="carousel-inner">
       
-            <div class="item active">
-            <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (40).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Vanguard</h3>
-                    <p>A powerful, heavily-armed battleship designed to lead the charge into enemy territory.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-      
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (41).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Thunderbird</h3>
-                    <p>A sleek and nimble ship that strikes with lightning speed and precision.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-          
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (44).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Leviathan</h3>
-                    <p>A massive, heavily-armored vessel that can withstand sustained enemy fire while dishing out devastating blows.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (46).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Chimera</h3>
-                    <p>A ship that is part predator, part prey, and all deadly. It can morph and adapt to its surroundings to outmaneuver and outgun its foes.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (47).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Eclipse</h3>
-                    <p>A stealthy ship that can disappear from enemy radar and strike with deadly force when the time is right.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (48).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Valkyrie</h3>
-                    <p>A ship crewed by elite pilots who specialize in aerial combat and dogfighting.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (49).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Goliath</h3>
-                    <p>A hulking, intimidating battleship that can plow through enemy formations and deliver crushing blows.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (50).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Hydra</h3>
-                    <p>A ship with multiple heads, each armed with its own weapons and capable of launching simultaneous attacks on multiple targets.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (51).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Nova</h3>
-                    <p>A ship that harnesses the power of the stars to unleash devastating energy blasts on its foes.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-            <div class="item">
-                <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="../index/images/animated/Untitled design (53).mp4" ></video>
-                <div class="carousel-caption">
-                    <h3>Ragnarok</h3>
-                    <p>A ship that brings about the end of worlds. It is armed with planet-destroying weaponry and can lay waste to entire systems with ease.</p>
-                    <button class="spaceshipBtn">Add to cart</button>
-                </div>
-            </div>
-        
           </div>
       
           <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -171,7 +88,6 @@
         </div>
       </div>
       <button onclick=openAddDialog() id="openAddDialog">Add Starship</button>
-      <button onclick=renderStarships() id="renderStarships">starships</button>
       <div class="footer_container">
         <div class="copyright">
             <p>Copyright © Nikita Rossenko 2023, All rights reserved.</p>

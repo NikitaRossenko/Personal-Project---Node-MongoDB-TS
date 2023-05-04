@@ -41,6 +41,7 @@ function openShop(){
         const videoContainer:any = document.querySelector(".video_container")
         const sliderContainer:any = document.querySelector(".sliderContainer")
         if (videoContainer && sliderContainer){
+            renderStarships()
             videoContainer.remove()
     
             sliderContainer.style.display = "flex"
@@ -108,11 +109,38 @@ function addStarship(e:any){
 
 async function renderStarships() {
 
-    const response = await fetch("/api/v1.0/items/get-starship");
-    const data = await response.json()
+    try {
+        const response = await fetch("/api/v1.0/items/get-starship");
+        const data = await response.json()
+    
+        if(data.ok === true) {
+            const starshipsArray = data.starships
+            const carouselInner = document.querySelector(".carousel-inner")
+            let itemClass = "item active"
+            if (!carouselInner) throw new Error("Corousel Error!")
 
-    if(data.ok === true) {
-        console.log(data.starships)
+            if (starshipsArray.length > 0) {
+                for (let i = 0 ; i<starshipsArray.length ; i++){
+                    if (i != 0){
+                        itemClass="item"
+                    }
+                    carouselInner.insertAdjacentHTML("beforeend", `<div class="${itemClass}">
+                    <video class="spaceshipVideo" onmouseover="this.play()" onmouseout="this.pause()" loop src="${starshipsArray[i].starshipModel}" ></video>
+                    <div class="carousel-caption">
+                        <h3>${starshipsArray[i].starshipName}</h3>
+                        <p>${starshipsArray[i].starshipDescription}</p>
+                        <p>Price: ${starshipsArray[i].starshipPrice}$</p>
+                        <button class="spaceshipBtn">Add to cart</button>
+                    </div>
+                </div>`)
+                }
+            }
+
+            
+            console.log(starshipsArray)
+        }
+    } catch (error) {
+        console.error(error)
     }
 }
 
