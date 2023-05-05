@@ -188,7 +188,7 @@ function renderStarships() {
                                 if (i != 0) {
                                     itemClass = "item";
                                 }
-                                carouselInner.insertAdjacentHTML("beforeend", "<div class=\"" + itemClass + "\">\n                    <video class=\"spaceshipVideo\" onmouseover=\"this.play()\" onmouseout=\"this.pause()\" loop src=\"" + starshipsArray[i].starshipModel + "\" ></video>\n                    <div class=\"carousel-caption\">\n                        <h3>" + starshipsArray[i].starshipName + "</h3>\n                        <p>" + starshipsArray[i].starshipDescription + "</p>\n                        <p>Price: " + starshipsArray[i].starshipPrice + "$</p>\n                        <button class=\"spaceshipBtn\">Add to cart</button>\n                    </div>\n                </div>");
+                                carouselInner.insertAdjacentHTML("beforeend", "<div class=\"" + itemClass + "\">\n                    <video class=\"spaceshipVideo\" onmouseover=\"this.play()\" onmouseout=\"this.pause()\" loop src=\"" + starshipsArray[i].starshipModel + "\" ></video>\n                    <div class=\"carousel-caption\">\n                        <h3>" + starshipsArray[i].starshipName + "</h3>\n                        <p>" + starshipsArray[i].starshipDescription + "</p>\n                        <p>Price: " + starshipsArray[i].starshipPrice + "$</p>\n                        <button id=\"" + starshipsArray[i]._id + "\" onclick=\"addItemToCart(this)\" class=\"spaceshipBtn\">Add to cart</button>\n                    </div>\n                </div>");
                             }
                         }
                         console.log(starshipsArray);
@@ -203,26 +203,37 @@ function renderStarships() {
         });
     });
 }
-// function addToCart(){
-//     try {
-//         fetch("/api/v1.0/cart/add-item", {
-//             method:"POST",
-//             headers: {
-//                 Accept: "application/json",
-//                 "Content-Type": "application/json",
-//             },
-//             body:JSON.stringify(itemId),
-//         })
-//         .then((res) => res.json())
-//         .then((data) => {
-//             if (data.ok === true){
-//                 location.href = "login.html"
-//             }
-//         })
-//         .catch((error) => {
-//             console.log(error)
-//         }))
-//     } catch (error) {
-//         console.error(error)
-//     }
-// }
+function addItemToCart(item) {
+    return __awaiter(this, void 0, void 0, function () {
+        var itemId, response, data, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    itemId = { itemId: item.id };
+                    return [4 /*yield*/, fetch("/api/v1.0/cart/add-item-to-cart", {
+                            method: "POST",
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(itemId)
+                        })];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    data = _a.sent();
+                    if (data.ok === false)
+                        throw new Error("Couldn't add item to cart!");
+                    console.log(data);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_4 = _a.sent();
+                    console.error(error_4);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}

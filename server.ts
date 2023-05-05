@@ -25,7 +25,7 @@ if (uri) {
 // Routes Import
 import loginRouter from "./API/routes/loginRoutes/loginRoute";
 import registerRouter from "./API/routes/registerRoutes/registerRoute";
-import itemsRouter from "./API/routes/items/itemsRouter";
+import itemsRouter from "./API/routes/itemsRoutes/itemsRouter";
 
 app.use(express.static("public"));
 app.use(express.static("public/index"));

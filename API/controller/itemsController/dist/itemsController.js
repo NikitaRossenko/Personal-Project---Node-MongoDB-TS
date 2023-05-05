@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-exports.getStarships = exports.addStarship = void 0;
+exports.addItemToCart = exports.getStarships = exports.addStarship = void 0;
 var starshipModel_1 = require("../../models/starshipModel");
 exports.addStarship = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, starshipName, starshipModel, starshipPrice, starshipDescription, createStarship, error_1;
@@ -80,7 +80,7 @@ exports.getStarships = function (req, res) { return __awaiter(void 0, void 0, vo
                     res.status(201).send({ ok: true, starships: starshipArray });
                 }
                 else {
-                    throw new Error("Couldn't fetch items");
+                    throw new Error("Couldn't fetch items or shop is empty");
                 }
                 return [3 /*break*/, 3];
             case 2:
@@ -90,5 +90,19 @@ exports.getStarships = function (req, res) { return __awaiter(void 0, void 0, vo
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
+    });
+}); };
+exports.addItemToCart = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var itemId;
+    return __generator(this, function (_a) {
+        try {
+            itemId = req.body.itemId;
+            console.log(itemId);
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500).send({ ok: false, error: error.message });
+        }
+        return [2 /*return*/];
     });
 }); };

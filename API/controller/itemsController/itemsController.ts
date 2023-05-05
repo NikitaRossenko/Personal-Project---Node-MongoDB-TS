@@ -31,9 +31,19 @@ export const getStarships = async (req:any, res:any) => {
             res.status(201).send({ok:true, starships:starshipArray})
 
         } else {
-            throw new Error("Couldn't fetch items")
+            throw new Error("Couldn't fetch items or shop is empty")
         }
 
+
+    } catch (error:any) {
+        console.log(error)
+        res.status(500).send({ok:false, error: error.message})
+    }
+}
+export const addItemToCart = async (req:any, res:any) => {
+    try {
+        const {itemId} = req.body;
+        console.log(itemId)
 
     } catch (error:any) {
         console.log(error)

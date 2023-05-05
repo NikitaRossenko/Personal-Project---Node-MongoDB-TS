@@ -130,7 +130,7 @@ async function renderStarships() {
                         <h3>${starshipsArray[i].starshipName}</h3>
                         <p>${starshipsArray[i].starshipDescription}</p>
                         <p>Price: ${starshipsArray[i].starshipPrice}$</p>
-                        <button class="spaceshipBtn">Add to cart</button>
+                        <button id="${starshipsArray[i]._id}" onclick="addItemToCart(this)" class="spaceshipBtn">Add to cart</button>
                     </div>
                 </div>`)
                 }
@@ -144,29 +144,25 @@ async function renderStarships() {
     }
 }
 
-// function addToCart(){
-//     try {
-//         fetch("/api/v1.0/cart/add-item", {
-//             method:"POST",
-//             headers: {
-//                 Accept: "application/json",
-//                 "Content-Type": "application/json",
-//             },
-//             body:JSON.stringify(itemId),
+async function addItemToCart(item){
+    try {
+        const itemId = {itemId:item.id};
+        const response = await fetch("/api/v1.0/cart/add-item-to-cart", {
+            method:"POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify(itemId),
 
-//         })
-//         .then((res) => res.json())
-//         .then((data) => {
-//             if (data.ok === true){
-//                 location.href = "login.html"
-//             }
-//         })
-//         .catch((error) => {
-//             console.log(error)
-//         }))
-        
-//     } catch (error) {
-//         console.error(error)
-//     }
+        })
+        const data = await response.json()
+        if (data.ok === false) throw new Error("Couldn't add item to cart!")
+            
+        console.log(data)
 
-// }
+    } catch (error) {
+        console.error(error)
+    }
+
+}

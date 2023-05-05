@@ -24,7 +24,7 @@ else {
 // Routes Import
 var loginRoute_1 = require("./API/routes/loginRoutes/loginRoute");
 var registerRoute_1 = require("./API/routes/registerRoutes/registerRoute");
-var itemsRouter_1 = require("./API/routes/items/itemsRouter");
+var itemsRouter_1 = require("./API/routes/itemsRoutes/itemsRouter");
 app.use(express_1["default"].static("public"));
 app.use(express_1["default"].static("public/index"));
 app.use(express_1["default"].static("public/login"));
