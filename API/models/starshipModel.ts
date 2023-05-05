@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const starshipSchema = new Schema({
+export const starshipSchema = new Schema({
     starshipName: String,
     starshipModel:String,
     starshipDescription:String,

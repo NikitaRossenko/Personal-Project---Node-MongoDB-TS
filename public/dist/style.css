@@ -53,6 +53,106 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.navBar .navBar_container .navBar_links .logoutLoginDiv {
+  position: relative;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon:hover .cartDetails {
+  display: flex;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon {
+  position: relative;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon .itemsQuantity {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  background-color: red;
+  font-size: 16px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon .icon {
+  cursor: pointer;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon .cartDetails {
+  display: none;
+  position: absolute;
+  top: 50px;
+  height: auto;
+  width: 200px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+  gap: 10px;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon .cartDetails .cartItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .cartIcon .cartDetails .cartItems .item {
+  width: 100%;
+  padding: 4px;
+  border-bottom: 1px solid black;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .accountIcon:hover .profileDetails {
+  display: flex;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .accountIcon {
+  position: relative;
+  display: flex;
+  width: 60px;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .accountIcon .icon {
+  cursor: pointer;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .accountIcon .profileDetails {
+  display: none;
+  position: absolute;
+  top: 50px;
+  height: 100px;
+  width: 100px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .accountIcon .profileDetails p {
+  color: #606060;
+  margin: 0;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv .material-symbols-outlined {
+  font-size: 34px;
+  color: #606060;
+}
+.navBar .navBar_container .navBar_links .logoutLoginDiv span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 60px;
+  height: 60px;
+}
 .navBar .navBar_container .navBar_links .links {
   display: flex;
   gap: 20px;
@@ -65,6 +165,7 @@ body {
   height: 500px;
   align-items: center;
   justify-content: center;
+  z-index: -1;
 }
 .videoContainer .sentensesContainer {
   position: absolute;

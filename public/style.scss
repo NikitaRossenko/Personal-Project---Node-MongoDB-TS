@@ -12,6 +12,7 @@ body {
     font-family: Verdana,sans-serif;
 }
 
+
 .navBar {
     display: flex;
     justify-content: center;
@@ -57,6 +58,128 @@ body {
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+
+            .logoutLoginDiv {
+                position: relative;
+                width: 200px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .cartIcon:hover .cartDetails{
+                    display: flex;
+                }
+
+                .cartIcon{
+                    position: relative;
+                    display: flex;
+                    width: 60px;
+                    height: 60px;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1;
+
+                    .itemsQuantity{
+                        position: absolute;
+                        top: 0;
+                        right: 4px;
+                        background-color: red;
+                        font-size: 16px;
+                        border-radius: 10px;
+                        color: white;
+                        text-align: center;
+                    }
+                    .icon{
+                        cursor: pointer;
+                    }
+
+                    .cartDetails{
+                        display: none;
+                        position: absolute;
+                        top: 50px;
+                        height: auto;
+                        width: 200px;
+                        align-items: center;
+                        justify-content: space-evenly;
+                        flex-direction: column;
+                        background-color: white;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        gap: 10px;
+
+                        .cartItems{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+
+                            .item {
+                                width: 100%;
+                                padding: 4px;
+                                border-bottom: 1px solid black;
+                            }
+                        }
+                    }
+
+                }
+
+                .accountIcon:hover .profileDetails{
+                    display: flex;
+                }
+
+                .accountIcon{
+                    position: relative;
+                    display: flex;
+                    width: 60px;
+                    height: 60px;
+                    align-items: center;
+                    justify-content: center;
+
+                    .icon{
+                        cursor: pointer;
+                    }
+
+                    .profileDetails{
+                        display: none;
+                        position: absolute;
+                        top: 50px;
+                        height: 100px;
+                        width: 100px;
+                        align-items: center;
+                        justify-content: space-evenly;
+                        flex-direction: column;
+                        background-color: white;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                        
+    
+                        p {
+                            color: #606060;
+                            margin: 0;
+                        }
+    
+                    }
+
+                }
+
+
+
+                .material-symbols-outlined{
+                    font-size: 34px;
+                    color: #606060;
+                }
+
+                span{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    width: 60px;
+                    height: 60px;
+                }
+            }
+            
     
             .links {
                 display: flex;
@@ -67,6 +190,7 @@ body {
     }
 }
 
+
 .videoContainer{
     position: relative;
     display: flex;
@@ -74,6 +198,7 @@ body {
     height: 500px;
     align-items: center;
     justify-content: center;
+    z-index: -1;
 
     .sentensesContainer {
         position: absolute;

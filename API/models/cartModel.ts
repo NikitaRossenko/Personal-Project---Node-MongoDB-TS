@@ -1,23 +1,15 @@
-import { Document, Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
+import { starshipSchema } from "./starshipModel";
 
-interface ICartItem {
-  productId: string;
-  quantity: number;
-}
+export const CartSchema = new Schema({
+  user: { type: String, required: true },
+});
 
-export interface ICart extends Document {
-  user: string;
-  items: ICartItem[];
-}
-
-const CartItemSchema = new Schema({
-  productId: { type: Schema.Types.ObjectId, required: true },
+export const CartItemSchema = new Schema({
+  product: starshipSchema,
   quantity: { type: Number, default: 1 },
+  cart:CartSchema
 });
 
-const CartSchema = new Schema({
-  user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
-  items: [CartItemSchema],
-});
 
-export const CartModel = model<ICart>("Cart", CartSchema);
+export const CartModel = model("Cart", CartItemSchema);

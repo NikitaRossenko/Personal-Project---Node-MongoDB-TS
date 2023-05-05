@@ -34,66 +34,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function checkLoggedIn() {
+function renderCartItems() {
     return __awaiter(this, void 0, void 0, function () {
-        var error_1;
+        var itemsCardHtml, itemsQuantityNumber, cartItems, itemsQuantity, response, data, cartItemsArray, i, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) {
-                            if (data.ok === false) {
-                                location.href = "/login.html";
-                            }
-                            else {
-                                var loginLogoutBtn = document.querySelector("#loginLogoutBtn");
-                                var username = document.querySelector("#username");
-                                if (loginLogoutBtn && username) {
-                                    username.innerText = data.user;
-                                    loginLogoutBtn.innerText = "Logout";
-                                    loginLogoutBtn.setAttribute("onclick", "logout()");
-                                }
-                            }
-                        })];
+                    _a.trys.push([0, 3, , 4]);
+                    itemsCardHtml = "";
+                    itemsQuantityNumber = 0;
+                    cartItems = document.querySelector(".cartItems");
+                    itemsQuantity = document.querySelector(".itemsQuantity");
+                    if (!cartItems)
+                        throw new Error("Can't catch cart!");
+                    if (!itemsQuantity)
+                        throw new Error("Can't catch quantity!");
+                    return [4 /*yield*/, fetch("/api/v1.0/cart/get-cart-items")];
                 case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
                 case 2:
+                    data = _a.sent();
+                    cartItemsArray = data.cartItemsArray;
+                    for (i = 0; i < cartItemsArray.length; i++) {
+                        itemsQuantityNumber += cartItemsArray[i].quantity;
+                        itemsCardHtml += "<div class=\"item\">\n            <p>Name: " + cartItemsArray[i].product.starshipName + "</p>\n            <p>Price: " + cartItemsArray[i].product.starshipPrice + "$</p>\n            <p>Quantity: " + cartItemsArray[i].quantity + "</p>\n            <p>Type: " + cartItemsArray[i].product.itemType + "</p>\n            <button id=\"" + cartItemsArray[i]._id + "\" onclick=\"deleteItemFromCart(this)\">Delete</button>\n        </div>";
+                    }
+                    itemsQuantity.innerText = "" + itemsQuantityNumber;
+                    cartItems.innerHTML = itemsCardHtml;
+                    return [3 /*break*/, 4];
+                case 3:
                     error_1 = _a.sent();
-                    console.log(error_1);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
-            }
-        });
-    });
-}
-function logout() {
-    return __awaiter(this, void 0, void 0, function () {
-        var error_2;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fetch("/api/v1.0/users/logout")
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) {
-                            if (data.ok === true) {
-                                location.href = "/";
-                            }
-                            else {
-                                throw new Error("Something went wrong!");
-                            }
-                        })];
-                case 1:
-                    _a.sent();
-                    return [3 /*break*/, 3];
-                case 2:
-                    error_2 = _a.sent();
-                    console.log(error_2);
-                    return [3 /*break*/, 3];
-                case 3: return [2 /*return*/];
+                    console.error(error_1);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
             }
         });
     });
@@ -157,7 +131,7 @@ function addStarship(e) {
                 console.error("Couldn't add item");
             }
         })["catch"](function (error) {
-            console.log(error);
+            console.error(error);
         });
     }
     catch (error) {
@@ -166,7 +140,7 @@ function addStarship(e) {
 }
 function renderStarships() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data, starshipsArray, carouselInner, itemClass, i, error_3;
+        var response, data, starshipsArray, carouselInner, itemClass, i, error_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -191,12 +165,11 @@ function renderStarships() {
                                 carouselInner.insertAdjacentHTML("beforeend", "<div class=\"" + itemClass + "\">\n                    <video class=\"spaceshipVideo\" onmouseover=\"this.play()\" onmouseout=\"this.pause()\" loop src=\"" + starshipsArray[i].starshipModel + "\" ></video>\n                    <div class=\"carousel-caption\">\n                        <h3>" + starshipsArray[i].starshipName + "</h3>\n                        <p>" + starshipsArray[i].starshipDescription + "</p>\n                        <p>Price: " + starshipsArray[i].starshipPrice + "$</p>\n                        <button id=\"" + starshipsArray[i]._id + "\" onclick=\"addItemToCart(this)\" class=\"spaceshipBtn\">Add to cart</button>\n                    </div>\n                </div>");
                             }
                         }
-                        console.log(starshipsArray);
                     }
                     return [3 /*break*/, 4];
                 case 3:
-                    error_3 = _a.sent();
-                    console.error(error_3);
+                    error_2 = _a.sent();
+                    console.error(error_2);
                     return [3 /*break*/, 4];
                 case 4: return [2 /*return*/];
             }
@@ -205,7 +178,7 @@ function renderStarships() {
 }
 function addItemToCart(item) {
     return __awaiter(this, void 0, void 0, function () {
-        var itemId, response, data, error_4;
+        var itemId, response, data, error_3;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -224,9 +197,43 @@ function addItemToCart(item) {
                     return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
+                    renderCartItems();
                     if (data.ok === false)
                         throw new Error("Couldn't add item to cart!");
-                    console.log(data);
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_3 = _a.sent();
+                    console.error(error_3);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function deleteItemFromCart(cartItem) {
+    return __awaiter(this, void 0, void 0, function () {
+        var cartItemId, response, data, error_4;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    cartItemId = { _id: cartItem.id };
+                    return [4 /*yield*/, fetch("/api/v1.0/cart/delete-item-from-cart", {
+                            method: "POST",
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(cartItemId)
+                        })];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    data = _a.sent();
+                    renderCartItems();
+                    if (data.ok === false)
+                        throw new Error("Couldn't add item to cart!");
                     return [3 /*break*/, 4];
                 case 3:
                     error_4 = _a.sent();
@@ -237,3 +244,4 @@ function addItemToCart(item) {
         });
     });
 }
+renderCartItems();

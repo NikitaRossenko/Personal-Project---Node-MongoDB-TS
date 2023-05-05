@@ -1,13 +1,14 @@
 "use strict";
 exports.__esModule = true;
-exports.CartModel = void 0;
+exports.CartModel = exports.CartItemSchema = exports.CartSchema = void 0;
 var mongoose_1 = require("mongoose");
-var CartItemSchema = new mongoose_1.Schema({
-    productId: { type: mongoose_1.Schema.Types.ObjectId, required: true },
-    quantity: { type: Number, "default": 1 }
+var starshipModel_1 = require("./starshipModel");
+exports.CartSchema = new mongoose_1.Schema({
+    user: { type: String, required: true }
 });
-var CartSchema = new mongoose_1.Schema({
-    user: { type: mongoose_1.Schema.Types.ObjectId, ref: 'User', required: true },
-    items: [CartItemSchema]
+exports.CartItemSchema = new mongoose_1.Schema({
+    product: starshipModel_1.starshipSchema,
+    quantity: { type: Number, "default": 1 },
+    cart: exports.CartSchema
 });
-exports.CartModel = mongoose_1.model("Cart", CartSchema);
+exports.CartModel = mongoose_1.model("Cart", exports.CartItemSchema);

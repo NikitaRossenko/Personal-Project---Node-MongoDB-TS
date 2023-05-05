@@ -34,9 +34,13 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+function start() {
+    checkLoggedInStore();
+    checkLoggedIn();
+}
 function checkLoggedInStore() {
     return __awaiter(this, void 0, void 0, function () {
-        var response, data, error_1;
+        var response, data, locationName, error_1;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -44,20 +48,14 @@ function checkLoggedInStore() {
                     return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")];
                 case 1:
                     response = _a.sent();
-                    return [4 /*yield*/, response.json()
-                        // await fetch("/api/v1.0/users/check-logged-in")
-                        //     .then((res) => res.json())
-                        //     .then((data) => {
-                    ];
+                    return [4 /*yield*/, response.json()];
                 case 2:
                     data = _a.sent();
-                    // await fetch("/api/v1.0/users/check-logged-in")
-                    //     .then((res) => res.json())
-                    //     .then((data) => {
+                    locationName = "" + location.href.split("/").slice(-1);
                     if (data.ok === false) {
                         location.href = "/login.html";
                     }
-                    else {
+                    else if (locationName != "ship-store.html") {
                         location.href = "/ship-store.html";
                     }
                     return [3 /*break*/, 4];
@@ -69,6 +67,82 @@ function checkLoggedInStore() {
             }
         });
     });
+}
+function checkLoggedIn() {
+    return __awaiter(this, void 0, void 0, function () {
+        var response, data, loginLogoutBtn, loginLogoutBtn, username, error_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/v1.0/users/check-logged-in")];
+                case 1:
+                    response = _a.sent();
+                    return [4 /*yield*/, response.json()];
+                case 2:
+                    data = _a.sent();
+                    if (data.ok === false) {
+                        loginLogoutBtn = document.querySelector("#loginLogoutBtn");
+                        if (loginLogoutBtn) {
+                            loginLogoutBtn.innerText = "Login";
+                            loginLogoutBtn.setAttribute("onlick", "loginAccount()");
+                            loginLogoutBtn.setAttribute("href", "login.html");
+                        }
+                    }
+                    else {
+                        loginLogoutBtn = document.querySelector("#loginLogoutBtn");
+                        username = document.querySelector("#username");
+                        if (loginLogoutBtn && username) {
+                            username.innerText = data.user;
+                            loginLogoutBtn.innerText = "Logout";
+                            loginLogoutBtn.setAttribute("onclick", "logout()");
+                        }
+                    }
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_2 = _a.sent();
+                    console.log(error_2);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function logout() {
+    return __awaiter(this, void 0, void 0, function () {
+        var error_3;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.log("logout");
+                    _a.label = 1;
+                case 1:
+                    _a.trys.push([1, 3, , 4]);
+                    return [4 /*yield*/, fetch("/api/v1.0/users/logout")
+                            .then(function (res) { return res.json(); })
+                            .then(function (data) {
+                            if (data.ok === true) {
+                                location.href = "/";
+                            }
+                            else {
+                                throw new Error("Something went wrong!");
+                            }
+                        })];
+                case 2:
+                    _a.sent();
+                    return [3 /*break*/, 4];
+                case 3:
+                    error_3 = _a.sent();
+                    console.log(error_3);
+                    return [3 /*break*/, 4];
+                case 4: return [2 /*return*/];
+            }
+        });
+    });
+}
+function loginAccount() {
+    console.log("login!!");
+    location.href = "login.html";
 }
 var index = 0;
 function sentensesSlide() {

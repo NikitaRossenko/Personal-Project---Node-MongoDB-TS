@@ -1,38 +1,35 @@
-async function checkLoggedIn() {
+async function renderCartItems(){
     try {
-        await fetch("/api/v1.0/users/check-logged-in")
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.ok === false){
-                    location.href = "/login.html"
-                } else {
-                    const loginLogoutBtn:any = document.querySelector("#loginLogoutBtn")
-                    const username:any = document.querySelector("#username")
-                    if (loginLogoutBtn && username){
-                        username.innerText = data.user
-                        loginLogoutBtn.innerText = "Logout"
-                        loginLogoutBtn.setAttribute("onclick", "logout()")
-                    }
-                }
-            });
-    } catch (error) {
-        console.log(error);
-    }
-}
+        let itemsCardHtml = ""
+        let itemsQuantityNumber = 0
+        const cartItems = document.querySelector(".cartItems")
+        const itemsQuantity:any = document.querySelector(".itemsQuantity")
+        if (!cartItems) throw new Error("Can't catch cart!")
+        if (!itemsQuantity) throw new Error("Can't catch quantity!")
 
-async function logout() {
-    try {
-        await fetch("/api/v1.0/users/logout")
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.ok === true){
-                    location.href = "/"
-                } else {
-                    throw new Error("Something went wrong!")
-                }
-            });
+        const response = await fetch("/api/v1.0/cart/get-cart-items")
+        const data = await response.json()
+        const cartItemsArray = data.cartItemsArray
+
+        for (let i = 0 ; i < cartItemsArray.length ; i++){
+            itemsQuantityNumber+=cartItemsArray[i].quantity
+            itemsCardHtml += `<div class="item">
+            <p>Name: ${cartItemsArray[i].product.starshipName}</p>
+            <p>Price: ${cartItemsArray[i].product.starshipPrice}$</p>
+            <p>Quantity: ${cartItemsArray[i].quantity}</p>
+            <p>Type: ${cartItemsArray[i].product.itemType}</p>
+            <button id="${cartItemsArray[i]._id}" onclick="deleteItemFromCart(this)">Delete</button>
+        </div>`
+        }
+        itemsQuantity.innerText=`${itemsQuantityNumber}`
+
+        cartItems.innerHTML = itemsCardHtml
+
+        
+
+
     } catch (error) {
-        console.log(error);
+        console.error(error)
     }
 }
 
@@ -98,7 +95,7 @@ function addStarship(e:any){
             }
         })
         .catch((error) => {
-            console.log(error)
+            console.error(error)
         })
 
 
@@ -137,7 +134,6 @@ async function renderStarships() {
             }
 
             
-            console.log(starshipsArray)
         }
     } catch (error) {
         console.error(error)
@@ -157,12 +153,35 @@ async function addItemToCart(item){
 
         })
         const data = await response.json()
+        renderCartItems()
         if (data.ok === false) throw new Error("Couldn't add item to cart!")
             
-        console.log(data)
-
     } catch (error) {
         console.error(error)
     }
 
 }
+
+async function deleteItemFromCart(cartItem) {
+    try {
+        const cartItemId = {_id:cartItem.id}
+
+        const response = await fetch("/api/v1.0/cart/delete-item-from-cart", {
+            method:"POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body:JSON.stringify(cartItemId),
+
+        })
+        const data = await response.json()
+        renderCartItems()
+        if (data.ok === false) throw new Error("Couldn't add item to cart!")
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+
+renderCartItems()
